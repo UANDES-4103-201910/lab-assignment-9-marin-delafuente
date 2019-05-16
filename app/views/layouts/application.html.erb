@@ -15,21 +15,22 @@
 
   <nav id="navbar-app" class="navbar navbar-expand-lg bg-dark justify-content-between fixed-top">
     <div class="row-10"></div>
-    <% if cookies["user_id"] =="" %>
+
+    <% if self.current_user == nil %>
+      <div class="row mx-2">
+        <div class="nav-item">
+          <form class="form-inline">
+            <a href="sessions#destroy" class="btn btn-outline-primary mr-sm-2" role="button">Log Out</a>
+          </form>
+        </div>
+      </div>
+    <% end %>
+    <% if self.current_user !=nil %>
       <div class="row mx-2">
         <div class="nav-item">
           <form class="form-inline">
             <a href="/sessions#new" class="btn btn-outline-primary mr-sm-2" role="button">Log in</a>
             <a href="/registrations#new" class="btn btn-outline-primary" role="button">Sign Up</a>
-          </form>
-        </div>
-      </div>
-    <% end %>
-    <% if cookies["user_id"] !=""%>
-      <div class="row mx-2">
-        <div class="nav-item">
-          <form class="form-inline">
-            <a href="sessions#destroy" class="btn btn-outline-primary mr-sm-2" role="button">Log Out</a>
           </form>
         </div>
       </div>
@@ -42,6 +43,9 @@
 
   |<br>
   <br>
+  <div>
+    <%=self .current_user%>
+  </div>
     <%= yield %>
 
   </body>
