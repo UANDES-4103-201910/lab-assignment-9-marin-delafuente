@@ -6,20 +6,27 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-
-	#complete this method
+    @user = User.find(cookies["user_id"].to_i)
   end
 
   def is_user_logged_in?
 	#complete this method
-  if cookies[user_id] == ""
-    logged_in = false
+
+
+  logged_in = false
+  if cookies["user_id"] != ""
+    logged_in = true
+  end
+  if self.current_user
+    logged_in = true
+  end
+
+
+
+	if logged_in then true else redirect_to root_path end 
   end
 
   def after_sign_in_path_for(resource)
     request.env['omniauth.origin'] || root_path
-  end
-
-	if logged_in then true else redirect_to root_path end 
   end
 end
