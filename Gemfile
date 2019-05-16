@@ -18,7 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
 gem 'therubyracer'
 gem 'jquery-rails'
 # Use CoffeeScript for .coffee assets and views
