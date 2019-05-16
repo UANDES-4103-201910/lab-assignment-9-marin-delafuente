@@ -2590,6 +2590,7 @@ for all models and all boolean columns, after which the flag must be set to
 true by adding the following to your application.rb file:
 
   Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+<<<<<<< HEAD
  (called from <top (required)> at /home/raimundo/Desktop/UANDES/WEB/lab-assignment-9-marin-delafuente/app/models/application_record.rb:1)
 Started GET "/sessions" for ::1 at 2019-05-16 17:34:00 -0400
   [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
@@ -2724,6 +2725,10 @@ puma (3.12.1) lib/puma/server.rb:474:in `process_client'
 puma (3.12.1) lib/puma/server.rb:334:in `block in run'
 puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
 Started GET "/" for ::1 at 2019-05-16 17:34:07 -0400
+=======
+ (called from <top (required)> at /home/hdelafuente/Desktop/lab-assignment-9-marin-delafuente/app/models/application_record.rb:1)
+Started GET "/" for ::1 at 2019-05-16 17:59:17 -0400
+>>>>>>> a513fa28a49ef9d24f24971c3210be1bb76beca5
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   
 ActiveRecord::PendingMigrationError (
@@ -2780,6 +2785,7 @@ for all models and all boolean columns, after which the flag must be set to
 true by adding the following to your application.rb file:
 
   Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+<<<<<<< HEAD
  (called from <top (required)> at /home/raimundo/Desktop/UANDES/WEB/lab-assignment-9-marin-delafuente/app/models/application_record.rb:1)
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Migrating to AddOmniauthToUsers (20190516200954)
@@ -3322,3 +3328,11 @@ No template found for RegistrationsController#create, rendering head :no_content
 Completed 204 No Content in 38ms (ActiveRecord: 0.0ms)
 
 
+=======
+ (called from <top (required)> at /home/hdelafuente/Desktop/lab-assignment-9-marin-delafuente/app/models/application_record.rb:1)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddOmniauthToUsers (20190516200954)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "provider" varchar[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+>>>>>>> a513fa28a49ef9d24f24971c3210be1bb76beca5
