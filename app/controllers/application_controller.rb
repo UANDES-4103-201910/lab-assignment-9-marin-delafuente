@@ -6,13 +6,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @user = User.find(cookies["user_id"].to_i)
+    #@user = User.find(cookies["user_id"].to_i)
   end
 
   def is_user_logged_in?
 	#complete this method
-
-
   logged_in = false
   if cookies["user_id"] != ""
     logged_in = true
