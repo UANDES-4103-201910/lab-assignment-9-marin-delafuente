@@ -1,12 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :authenticate_user!
 
   def index
 
   end
 
   def current_user
-    #@user = User.find(cookies["user_id"].to_i)
+    @current_user ||= session[:current_user_id] && User.find_by_id(session[:current_user_id])
   end
 
   def is_user_logged_in?
@@ -21,7 +22,7 @@ class ApplicationController < ActionController::Base
 
 
 
-	if logged_in then true else redirect_to root_path end 
+	if logged_in then true else redirect_to home_path end
   end
 
   def after_sign_in_path_for(resource)

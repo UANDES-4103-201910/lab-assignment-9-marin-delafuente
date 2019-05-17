@@ -35,24 +35,26 @@
       }(document, 'script', 'facebook-jssdk'));
   </script>
 
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.3&appId=445071476303141&autoLogAppEvents=1"></script>
+
   <nav id="navbar-app" class="navbar navbar-expand-lg bg-dark justify-content-between fixed-top">
     <div class="row-10"></div>
 
-    <% if self.current_user != nil %>
-      <div class="row mx-2">
-        <div class="nav-item">
-          <form class="form-inline">
-            <a href="sessions#destroy" class="btn btn-outline-primary mr-sm-2" role="button">Log Out</a>
-          </form>
-        </div>
-      </div>
-    <% end %>
-    <% if self.current_user == nil %>
+    <% if current_user == nil %>
       <div class="row mx-2">
         <div class="nav-item">
           <form class="form-inline">
             <a href="/" class="btn btn-outline-primary mr-sm-2" role="button">Log in</a>
             <a href="/sign_in" class="btn btn-outline-primary" role="button">Sign Up</a>
+          </form>
+        </div>
+      </div>
+    <% else %>
+      <div class="row mx-2">
+        <div class="nav-item">
+          <form class="form-inline">
+            <a href="sessions#destroy" class="btn btn-outline-primary mr-sm-2" role="button">Log Out</a>
           </form>
         </div>
       </div>

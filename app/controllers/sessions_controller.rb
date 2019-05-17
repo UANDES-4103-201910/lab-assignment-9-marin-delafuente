@@ -4,24 +4,35 @@ class SessionsController < ApplicationController
 
 	def create
 		#complete this method
-		@user = User.where(email: params[:session][:email]) #User.find_or_create_from_auth_hash(auth_hash)
-		if @user != nil
-			if @user.encypted_password == params[:session][:password]
-				self.current_user = @user
-				redirect_to '/aplications/index'
-			end
+		user = User.where(email: user_params[:email]).first
+		puts("###############")
+		puts user
+		puts session[:current_user_id]
+		puts("###############")
+		if user && user.encrypted_password == user_params[:password]
+			# Save the user ID in the session so it can be used in
+			# subsequent requests
+			session[:current_user_id] = user.id
+			flash[:notice] = "Welcome!"
+			redirect_to home_path
+		else
+			flash[:error] = "Incorrect username or password!"
+			redirect_to root_url
 		end
-
-			flash[alert] ="error"
 
 	end
 
 	def destroy
-		self.current_user = ""
-		cookies[user_id] = ""
+		@current_user = session[:current_user_id] = nil
+		#self.current_user = ""
+		#cookies[user_id] = ""
 		redirect_to root_path
 
 		#complete this method
+	end
+
+	def user_params
+		params.require(:session).permit(:email, :password)
 	end
 
 	protected

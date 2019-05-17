@@ -1,4 +1,6 @@
- <%= form_for(:session, url: log_in_path) do |f| %>
+<div class="container">
+
+<%= form_for(:session, url: log_in_path) do |f| %>
   <div class="form-group">
     <%= f.label :email,"Email" %><br />
     <%= f.email_field :email, autofocus: true  %>
@@ -11,5 +13,8 @@
   <div class="actions">
     <%= f.submit "Log In" %>
   </div>
+  <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+
   <br>
 <% end %>
+</div>
