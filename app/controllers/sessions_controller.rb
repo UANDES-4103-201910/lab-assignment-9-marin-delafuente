@@ -1,43 +1,36 @@
 class SessionsController < ApplicationController
 	def new
+		if current_user
+			redirect_to current_user
+		end
 	end
 
 	def create
-		#complete this method
 		user = User.where(email: user_params[:email]).first
-		puts("###############")
 		puts user
-		puts session[:current_user_id]
-		puts("###############")
-		if user && user.encrypted_password == user_params[:password]
+		if user && user.password == user_params[:password]
 			# Save the user ID in the session so it can be used in
 			# subsequent requests
 			session[:current_user_id] = user.id
-			flash[:notice] = "Welcome!"
-			redirect_to home_path
+			flash[:notice] = "Successful Login"
+			redirect_to user
 		else
-			flash[:error] = "Incorrect username or password!"
+			flash[:error] = "Invalid credentials"
 			redirect_to root_url
 		end
-
 	end
 
 	def destroy
 		@current_user = session[:current_user_id] = nil
-		#self.current_user = ""
-		#cookies[user_id] = ""
-		redirect_to root_path
-
-		#complete this method
+		session["warden.user.user.key"][0][0] = 0
+		redirect_to root_url
 	end
 
 	def user_params
 		params.require(:session).permit(:email, :password)
 	end
 
-	protected
-
-	def auth_hash
-		request.env['omniauth.auth']
+	def google_logged_in
+		if session["warden.user.user.key"] then true else false end
 	end
 end

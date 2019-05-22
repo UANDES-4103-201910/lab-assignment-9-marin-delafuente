@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lab10Assignment</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <nav class="navbar">
+    <strong><%= User.find(session["warden.user.user.key"][0][0]).name %></strong>
+    <button><%= link_to "Log Out", log_out_path, method: :delete %></button>
+  </nav>
+  <p id="notice"><%= notice %></p>
+  <%= yield %>
+</body>
+</html>

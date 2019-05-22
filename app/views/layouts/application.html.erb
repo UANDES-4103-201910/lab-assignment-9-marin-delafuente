@@ -1,77 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Lab4Assignment</title>
+    <title>Lab10Assignment</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
   </head>
 
-
   <body>
-
-  <script>
-      window.fbAsyncInit = function() {
-          FB.init({
-              appId      : '445071476303141',
-              cookie     : true,
-              xfbml      : true,
-              version    : 'v3.3'
-          });
-
-          FB.AppEvents.logPageView();
-
-      };
-
-      (function(d, s, id){
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) {return;}
-          js = d.createElement(s); js.id = id;
-          js.src = "https://connect.facebook.net/en_US/sdk.js";
-          fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-  </script>
-
-  <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.3&appId=445071476303141&autoLogAppEvents=1"></script>
-
-  <nav id="navbar-app" class="navbar navbar-expand-lg bg-dark justify-content-between fixed-top">
-    <div class="row-10"></div>
-
-    <% if current_user == nil %>
-      <div class="row mx-2">
-        <div class="nav-item">
-          <form class="form-inline">
-            <a href="/" class="btn btn-outline-primary mr-sm-2" role="button">Log in</a>
-            <a href="/sign_in" class="btn btn-outline-primary" role="button">Sign Up</a>
-          </form>
-        </div>
-      </div>
-    <% else %>
-      <div class="row mx-2">
-        <div class="nav-item">
-          <form class="form-inline">
-            <a href="sessions#destroy" class="btn btn-outline-primary mr-sm-2" role="button">Log Out</a>
-          </form>
-        </div>
-      </div>
-    <% end %>
-
-  </nav>
-  |<br>
-  <br>
-
-  	<p id="notice"><%= notice %></p>
-    <p id="alert"><%= alert %></p>
-
-
-  <div>
-    <%=self .current_user%>
-  </div>
-    <%= yield %>
-
+      <p id="notice"><%= notice %></p>
+      <%= yield %>
   </body>
 </html>
