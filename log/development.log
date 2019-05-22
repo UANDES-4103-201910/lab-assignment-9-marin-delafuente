@@ -4974,3 +4974,122 @@ Processing by Devise::SessionsController#new as HTML
 Completed 200 OK in 44ms (Views: 40.2ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/users/sign_in" for ::1 at 2019-05-22 15:16:38 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/hdelafuente/.rvm/gems/ruby-2.5.1/gems/devise-4.6.2/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/hdelafuente/.rvm/gems/ruby-2.5.1/gems/devise-4.6.2/app/views/devise/shared/_links.html.erb (0.7ms)
+  Rendered /home/hdelafuente/.rvm/gems/ruby-2.5.1/gems/devise-4.6.2/app/views/devise/sessions/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 16ms (Views: 14.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/google_oauth2" for ::1 at 2019-05-22 15:16:50 -0400
+Started GET "/users/auth/google_oauth2" for ::1 at 2019-05-22 15:16:50 -0400
+Started GET "/users/auth/google_oauth2/callback?state=84a500894a6631007284a5f64dcd066e91907437c2d184b0&code=4/UgHqmGU1wjoIeJSpSiEg6882w28QSjxGIemhSYGHoDEj2iw_TAFuVi5La7JIIXG7pM-ldi7fiKF--bwO5PbKFxI&scope=email+profile+https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile" for ::1 at 2019-05-22 15:16:50 -0400
+Processing by CallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"84a500894a6631007284a5f64dcd066e91907437c2d184b0", "code"=>"4/UgHqmGU1wjoIeJSpSiEg6882w28QSjxGIemhSYGHoDEj2iw_TAFuVi5La7JIIXG7pM-ldi7fiKF--bwO5PbKFxI", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = ? AND "users"."uid" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["provider", "google_oauth2"], ["uid", "115088617075181050952"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "hadelafuente@miuandes.cl"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "encrypted_password" = ?, "oauth_token" = ?, "oauth_expieres_at" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["encrypted_password", "$2a$11$/TCztqAW/.nZlrJN3tG5V.xjVxVJyhERDykgAkt3Z3d.vMSzRqKmG"], ["oauth_token", "ya29.GlsRB0ZfzZARZ9iSYa7h1cAj2YVRR9IAQUFKFU1RocqbnY5FoVZScDBa67xcZPETEBoXCp0_5AUOFwP1KXOqjp849kQQjqkxuc8aAPQKFTbN1B3IAn_VVY684hny"], ["oauth_expieres_at", "2019-05-22 20:16:50"], ["updated_at", "2019-05-22 19:16:52.104443"], ["id", 1]]
+  [1m[35m (9.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2019-05-22 19:16:52.117093"], ["sign_in_count", 9], ["current_sign_in_at", "2019-05-22 19:16:52.116575"], ["last_sign_in_at", "2019-05-22 19:14:25.473334"], ["id", 1]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 158ms (ActiveRecord: 13.5ms)
+
+
+Started GET "/" for ::1 at 2019-05-22 15:16:52 -0400
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/new.html.erb within layouts/google_logged_in
+  Rendered sessions/new.html.erb within layouts/google_logged_in (0.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 12.1ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/log_out" for ::1 at 2019-05-22 15:17:00 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"otb1BTFo7CQyr2HMkvxQktUUy2qciS9iV2N+KJANIEf3goCF55IzrbcBuFCLR7pBd1h7OBm8q1thsPe/ZmQkXg=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-05-22 15:17:00 -0400
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-05-22 15:17:00 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/hdelafuente/.rvm/gems/ruby-2.5.1/gems/devise-4.6.2/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/hdelafuente/.rvm/gems/ruby-2.5.1/gems/devise-4.6.2/app/views/devise/shared/_links.html.erb (1.6ms)
+  Rendered /home/hdelafuente/.rvm/gems/ruby-2.5.1/gems/devise-4.6.2/app/views/devise/sessions/new.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 22ms (Views: 19.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/google_oauth2" for ::1 at 2019-05-22 15:17:12 -0400
+Started GET "/users/auth/google_oauth2" for ::1 at 2019-05-22 15:17:12 -0400
+Started GET "/users/auth/google_oauth2/callback?state=e4e4acc15add4c019c6d38431102220d343dcf180d311125&code=4/UgG7amcwqf2gzQEjCbsoEn3-j_huj3Vi0aPU1ri85GtyhLFnJ4HlK897-an_vZI_8y3jCHWLq0s3FFrCnAGobRQ&scope=email+profile+https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile" for ::1 at 2019-05-22 15:17:12 -0400
+Processing by CallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"e4e4acc15add4c019c6d38431102220d343dcf180d311125", "code"=>"4/UgG7amcwqf2gzQEjCbsoEn3-j_huj3Vi0aPU1ri85GtyhLFnJ4HlK897-an_vZI_8y3jCHWLq0s3FFrCnAGobRQ", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = ? AND "users"."uid" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["provider", "google_oauth2"], ["uid", "115088617075181050952"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "hadelafuente@miuandes.cl"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "encrypted_password" = ?, "oauth_token" = ?, "oauth_expieres_at" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["encrypted_password", "$2a$11$3TEDs0gCYJ5IIj9JGyDMNeCKDjiAJoAn1AxEYBlbzwWYU1ywEdMsq"], ["oauth_token", "ya29.GlsRB_TNgtmvlOx8EBXUrUuTWOoDHAr3ZTHV38qLtn9crAJOhH5gz9LMRFDlhKvltl_z9clE7vnGo9vMJm2r0R7oPzQY5zEeSQVB8Lhdw1TIDZAvDlx4R56zjA6M"], ["oauth_expieres_at", "2019-05-22 20:17:13"], ["updated_at", "2019-05-22 19:17:14.633671"], ["id", 1]]
+  [1m[35m (7.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2019-05-22 19:17:14.645741"], ["sign_in_count", 10], ["current_sign_in_at", "2019-05-22 19:17:14.644317"], ["last_sign_in_at", "2019-05-22 19:16:52.116575"], ["id", 1]]
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 156ms (ActiveRecord: 11.2ms)
+
+
+Started GET "/" for ::1 at 2019-05-22 15:17:14 -0400
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/new.html.erb within layouts/google_logged_in
+  Rendered sessions/new.html.erb within layouts/google_logged_in (1.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 23ms (Views: 20.6ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/log_out" for ::1 at 2019-05-22 15:17:17 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ka6HjPxm3icznp+DRtm4symFRUBrfNbFGxFG8SgZ8kSl6ZfVGv9jVsnupKxhwTGotXW3KGxiUjZRXbugsouJ6Q=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-05-22 15:17:17 -0400
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-05-22 15:17:17 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/hdelafuente/.rvm/gems/ruby-2.5.1/gems/devise-4.6.2/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/hdelafuente/.rvm/gems/ruby-2.5.1/gems/devise-4.6.2/app/views/devise/shared/_links.html.erb (0.8ms)
+  Rendered /home/hdelafuente/.rvm/gems/ruby-2.5.1/gems/devise-4.6.2/app/views/devise/sessions/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 19ms (Views: 17.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-05-22 15:24:05 -0400
+Processing by SessionsController#new as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-05-22 15:24:05 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/hdelafuente/.rvm/gems/ruby-2.5.1/gems/devise-4.6.2/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/hdelafuente/.rvm/gems/ruby-2.5.1/gems/devise-4.6.2/app/views/devise/shared/_links.html.erb (0.7ms)
+  Rendered /home/hdelafuente/.rvm/gems/ruby-2.5.1/gems/devise-4.6.2/app/views/devise/sessions/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 15ms (Views: 13.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/google_oauth2" for 127.0.0.1 at 2019-05-22 15:24:19 -0400
+Started GET "/users/auth/google_oauth2" for 127.0.0.1 at 2019-05-22 15:24:19 -0400
