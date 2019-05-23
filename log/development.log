@@ -8778,3 +8778,197 @@ Processing by EventsController#show as HTML
 Completed 200 OK in 32ms (Views: 27.8ms | ActiveRecord: 0.5ms)
 
 
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from <top (required)> at /home/raimundo/Desktop/UANDES/WEB/lab-assignment-9-marin-delafuente/app/models/application_record.rb:1)
+Started GET "/events" for ::1 at 2019-05-23 10:47:19 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/google_logged_in
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/google_logged_in (19.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 469ms (Views: 401.8ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/events/new" for ::1 at 2019-05-23 10:47:23 -0400
+Processing by EventsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/new.html.erb within layouts/google_logged_in
+  [1m[36mPlace Load (0.4ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  Rendered events/_form.html.erb (54.2ms)
+  Rendered events/new.html.erb within layouts/google_logged_in (59.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 104ms (Views: 98.7ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/events" for ::1 at 2019-05-23 10:47:33 -0400
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MRAg5vOMzK4xxqV6HMFkwdm9MBnojNgbzwmZB0FpcYRV9iwvVaCZunLdKXDkI/22HQ7LjrF0srf9Xa5GGW0uIA==", "event"=>{"name"=>"sdfg", "description"=>"asdf", "start_date"=>"2019-05-31", "place_id"=>"10"}, "commit"=>"Create Event"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPlace Load (0.5ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."place_id" = ? AND "events"."start_date" = ?[0m  [["place_id", 10], ["start_date", "2019-05-31"]]
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("name", "description", "start_date", "place_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "sdfg"], ["description", "asdf"], ["start_date", "2019-05-31"], ["place_id", 10], ["created_at", "2019-05-23 14:47:33.236428"], ["updated_at", "2019-05-23 14:47:33.236428"]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/events/14
+Completed 302 Found in 31ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/events/14" for ::1 at 2019-05-23 10:47:33 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/google_logged_in
+  Rendered events/show.html.erb within layouts/google_logged_in (0.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 49ms (Views: 44.2ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/log_out" for ::1 at 2019-05-23 10:53:56 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+ZRdvRZl1Wd9uHORY6hbfLwD3mKopHZF+qUMCKpXP+FKp2O1R+ZJrBp0vhWjUDuXZPG77V5laGQ2YVCAOZjiqw=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 28ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2019-05-23 10:53:57 -0400
+Processing by SessionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-05-23 10:53:57 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/raimundo/.rvm/gems/ruby-2.5.1/gems/devise-4.6.2/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/raimundo/.rvm/gems/ruby-2.5.1/gems/devise-4.6.2/app/views/devise/shared/_links.html.erb (1.6ms)
+  Rendered /home/raimundo/.rvm/gems/ruby-2.5.1/gems/devise-4.6.2/app/views/devise/sessions/new.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 42ms (Views: 39.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2019-05-23 10:54:08 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4Q0pBIGH1a1iSkmdpao1++i9/Mu0uVIcebOotFgW6fhSPhcM0ARJZgWGhBllUlUQME+ZREJ4TD21d/Q8y9k0sg==", "user"=>{"email"=>"m@m.cl", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "m@m.cl"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2019-05-23 14:54:08.900204"], ["sign_in_count", 2], ["updated_at", "2019-05-23 14:54:08.900921"], ["id", 7]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 162ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/" for ::1 at 2019-05-23 10:54:08 -0400
+Processing by SessionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering sessions/index.html.erb within layouts/google_logged_in
+  Rendered sessions/index.html.erb within layouts/google_logged_in (7.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+Completed 200 OK in 36ms (Views: 33.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/events" for ::1 at 2019-05-23 10:54:20 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/google_logged_in
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/google_logged_in (14.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+Completed 200 OK in 42ms (Views: 37.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/events/new" for ::1 at 2019-05-23 10:54:22 -0400
+Processing by EventsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering events/new.html.erb within layouts/google_logged_in
+  [1m[36mPlace Load (0.4ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  Rendered events/_form.html.erb (20.6ms)
+  Rendered events/new.html.erb within layouts/google_logged_in (22.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+Completed 200 OK in 61ms (Views: 54.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/tickets" for ::1 at 2019-05-23 10:54:25 -0400
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tickets/index.html.erb within layouts/google_logged_in
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets"[0m
+  Rendered tickets/index.html.erb within layouts/google_logged_in (18.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+Completed 200 OK in 45ms (Views: 40.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/tickets/new" for ::1 at 2019-05-23 10:54:28 -0400
+Processing by TicketsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tickets/new.html.erb within layouts/google_logged_in
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered tickets/_form.html.erb (7.0ms)
+  Rendered tickets/new.html.erb within layouts/google_logged_in (8.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+Completed 200 OK in 39ms (Views: 35.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/tickets" for ::1 at 2019-05-23 10:54:50 -0400
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vbkMe+l/OUg/vYuAbbrFvKUndlpAvfAZ1mNr3wco0fjfmUs+1fpjlypH3y7Mk+riIqMIRs3m3sw7ggpUO36v/g==", "ticket"=>{"description"=>"vip", "price"=>"678000000", "event_id"=>"11"}, "commit"=>"Create Ticket"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/tickets_controller.rb:27:in `create'
+Started POST "/tickets" for ::1 at 2019-05-23 10:56:11 -0400
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1HTAg53lhlV6Dk1NUl4esBE9yoKl5SN50XdqEGR1E7t5FD0sZ3/KGGiicasdQYQYWd/g2vDbYeDkg0ys3CLFow==", "ticket"=>{"description"=>"vip", "price"=>"678000000", "event_id"=>"11"}, "commit"=>"Create Ticket"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 1.7ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/models/ticket.rb:12:in `ticket_on_time_event'
+app/controllers/tickets_controller.rb:31:in `block in create'
+app/controllers/tickets_controller.rb:30:in `create'
+Started POST "/tickets" for ::1 at 2019-05-23 10:57:54 -0400
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1HTAg53lhlV6Dk1NUl4esBE9yoKl5SN50XdqEGR1E7t5FD0sZ3/KGGiicasdQYQYWd/g2vDbYeDkg0ys3CLFow==", "ticket"=>{"description"=>"vip", "price"=>"678000000", "event_id"=>"11"}, "commit"=>"Create Ticket"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mTicket Create (0.3ms)[0m  [1m[32mINSERT INTO "tickets" ("description", "price", "event_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["description", "vip"], ["price", 678000000], ["event_id", 11], ["created_at", "2019-05-23 14:57:54.245343"], ["updated_at", "2019-05-23 14:57:54.245343"]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tickets/38
+Completed 302 Found in 63ms (ActiveRecord: 6.1ms)
+
+
+Started GET "/tickets/38" for ::1 at 2019-05-23 10:57:54 -0400
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"38"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 38], ["LIMIT", 1]]
+  Rendering tickets/show.html.erb within layouts/google_logged_in
+  Rendered tickets/show.html.erb within layouts/google_logged_in (1.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+Completed 200 OK in 45ms (Views: 39.0ms | ActiveRecord: 1.0ms)
+
+

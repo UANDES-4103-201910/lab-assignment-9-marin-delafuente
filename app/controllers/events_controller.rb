@@ -24,7 +24,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    puts params
+
     @event = Event.new(name: params[:event][:name], description: params[:event][:description],
                        start_date: DateTime.parse(params[:event][:start_date]),place_id: params[:event][:place_id])
 
