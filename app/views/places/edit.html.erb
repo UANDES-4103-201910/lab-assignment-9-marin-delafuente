@@ -1,6 +1,14 @@
 <h1>Editing Place</h1>
-
+<%if can? :manage, @place %>
 <%= render 'form', place: @place %>
-
+<% else %>
+<b>Error</b>, you do not have permission to access here
+<% end %>
+<%if can? :read, @place %>
 <%= link_to 'Show', @place %> |
 <%= link_to 'Back', places_path %>
+<% else %>
+  <b>Error</b>, you do not have permission to access here
+<% end %>
+
+

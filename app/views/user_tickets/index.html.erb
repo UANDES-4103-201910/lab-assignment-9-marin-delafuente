@@ -12,14 +12,22 @@
   <tbody>
     <% @user_tickets.each do |user_ticket| %>
       <tr>
+        <%if can? :read ,@user_tickets %>
         <td><%= link_to 'Show', user_ticket %></td>
+        <%elsif can? :manage, @user_ticket %>
         <td><%= link_to 'Edit', edit_user_ticket_path(user_ticket) %></td>
         <td><%= link_to 'Destroy', user_ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% else %>
+        <b>Error</b>, you do not have permission to access here
+      <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<%if can? :create, @user_ticket %>
 <%= link_to 'New User Ticket', new_user_ticket_path %>
+<% else %>
+<b>Error</b>, you do not have permission to access here
+<% end %>

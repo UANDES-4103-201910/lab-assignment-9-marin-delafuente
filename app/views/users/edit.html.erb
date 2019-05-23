@@ -1,6 +1,9 @@
 <h1>Editing User</h1>
-
+<%if can? :manage, @user %>
 <%= render 'form', user: @user %>
 
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>
+<% else %>
+<b>Error</b>, you do not have permission to access here
+<% end %>

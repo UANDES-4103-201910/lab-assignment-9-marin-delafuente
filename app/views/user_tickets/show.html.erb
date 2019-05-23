@@ -1,4 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<%if can? :manage, @user_ticket %>
 <%= link_to 'Edit', edit_user_ticket_path(@user_ticket) %> |
+<% else %>
+  <b>Error</b>, you do not have permission to access here
+<% end %>
 <%= link_to 'Back', user_tickets_path %>

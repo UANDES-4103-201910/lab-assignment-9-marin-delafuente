@@ -12,14 +12,22 @@
   <tbody>
     <% @places.each do |place| %>
       <tr>
+        <%if can? :read, @place %>
         <td><%= link_to 'Show', place %></td>
+          <%elsif can? :manage, @place %>
         <td><%= link_to 'Edit', edit_place_path(place) %></td>
         <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% else %>
+            <b>Error</b>, you do not have permission to access here
+          <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+        <%if can? :manage, @place %>
 <%= link_to 'New Place', new_place_path %>
+  <% else %>
+    <b>Error</b>, you do not have permission to access here
+  <% end %>

@@ -1,3 +1,4 @@
+<% if can? :create, ticket %>
 <%= form_with(model: ticket, local: true) do |form| %>
   <% if ticket.errors.any? %>
     <div id="error_explanation">
@@ -30,4 +31,7 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+<% end %>
+<% else %>
+  <b>Error</b>, you do not have permission to access here
 <% end %>
