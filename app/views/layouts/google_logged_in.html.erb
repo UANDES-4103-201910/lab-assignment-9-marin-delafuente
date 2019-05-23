@@ -35,11 +35,18 @@
 </nav>
   <div>
     <strong><%= User.find(session["warden.user.user.key"][0][0]).name %></strong>
-    <% if can? :manage,  %>
-      <%= link_to "View", @post %>
-    <% end %>
 
   </div>
+<% if can? :manage, Ticket %>
+  <%= link_to tickets_path %>
+<% end %>
+<% if can? :manage, Event %>
+  <%= link_to event_path %>
+<% end %>
+<% if can? :read, UserTicket %>
+
+  <%= link_to new_user_ticket_path %>
+<% end %>
   <p id="notice"><%= notice %></p>
   <%= yield %>
 </body>

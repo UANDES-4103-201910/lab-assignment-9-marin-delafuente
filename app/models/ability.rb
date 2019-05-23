@@ -34,7 +34,7 @@ class Ability
     if user.present?
       can :create, UserTicket
       if user.admin?
-        can :read, post
+        can :manage, :all
       end
     end
   end
