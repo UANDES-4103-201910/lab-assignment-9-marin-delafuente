@@ -45,7 +45,7 @@
 <% end %>
 <% if can? :create, UserTicket %>
 
-  <%= link_to new_user_ticket_path %> <br>
+  <%= link_to "Purchase ticket", new_user_ticket_path %> <br>
 <% end %>
   <p id="notice"><%= notice %></p>
   <%= yield %>
