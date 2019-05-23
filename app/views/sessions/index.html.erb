@@ -1,1 +1,5 @@
-<h1>HOLAAAAAAAAA</h1>
+<%= link_to "Log Out", log_out_path, method: :delete %>
+
+<% if can? :read, Ticket %>
+  <strong>HOLAAAAAAA</strong>
+<% end %>

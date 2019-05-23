@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { :omniauth_callbacks => "callbacks" }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users
-
+  resources :tickets
   root :to => 'sessions#index'
 
   post '/login',   to: 'sessions#create', as: :log_in
