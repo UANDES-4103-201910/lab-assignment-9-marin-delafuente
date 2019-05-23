@@ -4,7 +4,11 @@ class UserTicketsController < ApplicationController
   # GET /user_tickets
   # GET /user_tickets.json
   def index
-    @user_tickets = UserTicket.all
+    @user_tickets = UserTicket.where( user_id: session["warden.user.user.key"][0][0])
+    @user_tickets.each do |ticket|
+      puts(Ticket.where(id: ticket.id)[0]["price"])
+      puts(ticket.user_id)
+    end
   end
 
   # GET /user_tickets/1
@@ -15,8 +19,14 @@ class UserTicketsController < ApplicationController
   # GET /user_tickets/new
   def new
     @user_ticket = UserTicket.new
+    events = Event.all
+    @upcoming_events = []
+    events.each do |event|
+      if event.start_date > Date.today
+        @upcoming_events.append(event)
+      end
+    end
   end
-
   # GET /user_tickets/1/edit
   def edit
   end
@@ -25,10 +35,11 @@ class UserTicketsController < ApplicationController
   # POST /user_tickets.json
   def create
     @user_ticket = UserTicket.new(user_ticket_params)
-
+    puts("###########DEBUG##############")
+    puts(params)
     respond_to do |format|
       if @user_ticket.save
-        format.html { redirect_to @user_ticket, notice: 'User ticket was successfully created.' }
+        format.html { redirect_to @user_ticket, notice: 'Ticket was successfully added to the cart.' }
         format.json { render :show, status: :created, location: @user_ticket }
       else
         format.html { render :new }

@@ -37,18 +37,19 @@
     <strong><%= User.find(session["warden.user.user.key"][0][0]).name %></strong>
 
   </div>
-<% if can? :manage, Ticket %>
-  <%= link_to "Manage Tickets", tickets_path %> <br>
-<% end %>
-<% if can? :manage, Event %>
-  <%= link_to "Manage Events", events_path %> <br>
-<% end %>
-<% if can? :read, UserTicket %>
-
-  <%= link_to new_user_ticket_path %> <br>
-<% end %>
+<div class="container">
+  <% if can? :manage, Ticket %>
+    <%= link_to "Manage Tickets", tickets_path %> <br>
+  <% end %>
+  <% if can? :manage, Event %>
+    <%= link_to "Manage Events", events_path %> <br>
+  <% end %>
+  <% if can? :read, UserTicket %>
+    <%= link_to "Purchase Ticket", new_user_ticket_path %>
+  <% end %>
   <p id="notice"><%= notice %></p>
   <%= yield %>
+</div>
 </body>
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
