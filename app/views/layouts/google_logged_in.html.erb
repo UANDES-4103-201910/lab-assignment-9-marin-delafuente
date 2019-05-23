@@ -35,6 +35,9 @@
 </nav>
   <div>
     <strong><%= User.find(session["warden.user.user.key"][0][0]).name %></strong>
+    <% if can? :manage,  %>
+      <%= link_to "View", @post %>
+    <% end %>
 
   </div>
   <p id="notice"><%= notice %></p>
