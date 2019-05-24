@@ -1,6 +1,12 @@
 <h1>Editing Event</h1>
-
+<%if can? :manage, @event %>
 <%= render 'form', event: @event %>
 
 <%= link_to 'Show', @event %> |
 <%= link_to 'Back', events_path %>
+
+<% else %>
+  <b>Error</b>, you do not have permission to access here
+<% end %>
+
+
