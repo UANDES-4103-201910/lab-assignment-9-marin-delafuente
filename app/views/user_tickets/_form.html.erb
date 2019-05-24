@@ -12,17 +12,7 @@
   <% end %>
 
   <% if can? :read, Event %>
-    <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-        <BtnCaption>Select Event</BtnCaption>
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <% @upcoming_events.each do |event| %>
-          <li><%= event.name %></li>
-        <% end %>
-      </ul>
-    </div>
+    <%= form.collection_select(:ticket, :event_id, @upcoming_events, :name, :price, include_blank: true )%>
   <% end %>
 
   <div class="actions">

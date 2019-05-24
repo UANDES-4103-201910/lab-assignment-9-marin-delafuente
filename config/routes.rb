@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :tickets
   root :to => 'sessions#index'
 
+  get '/cart', to: 'cart#index', ad: :shopping_cart
+
   post '/login',   to: 'sessions#create', as: :log_in
   delete '/log_out' => 'sessions#destroy', as: :log_out
 

@@ -10,13 +10,16 @@
 
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
-  <a class="navbar-brand" >Login</a>
+  <a class="navbar-brand">Home</a>
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="true">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div id="navb" class="navbar-collapse collapse hide">
     <%if  current_user%>
       <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item" style="margin-right: 5px">
+          <a class="fa fa-shopping-cart"><%= link_to "Cart", cart_path %></a>
+        </li>
       <li class="nav-item">
         <a class="fas fa-sign-in-alt"><%= link_to "Log Out", log_out_path, method: :delete %></a>
       </li>
@@ -33,22 +36,22 @@
     <%end %>
   </div>
 </nav>
-  <div>
+  <div class="container">
     <strong><%= User.find(session["warden.user.user.key"][0][0]).name %></strong>
-
   </div>
-<% if can? :manage, Ticket %>
-  <%= link_to "Manage Tickets", tickets_path %> <br>
-<% end %>
-<% if can? :manage, Event %>
-  <%= link_to "Manage Events", events_path %> <br>
-<% end %>
-<% if can? :create, UserTicket %>
-
-  <%= link_to "Purchase ticket", new_user_ticket_path %> <br>
-<% end %>
+<div class="container">
   <p id="notice"><%= notice %></p>
-  <%= yield %>
+  <% if can? :manage, Ticket %>
+    <%= link_to "Manage Tickets", tickets_path %> <br>
+  <% end %>
+  <% if can? :manage, Event %>
+    <%= link_to "Manage Events", events_path %> <br>
+  <% end %>
+  <% if can? :create, UserTicket %>
+    <%= link_to "Purchase ticket", new_user_ticket_path %> <br>
+  <% end %>
+    <%= yield %>
+</div>
 </body>
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">

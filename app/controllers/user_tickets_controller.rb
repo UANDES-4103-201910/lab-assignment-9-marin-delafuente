@@ -23,9 +23,15 @@ class UserTicketsController < ApplicationController
     @upcoming_events = []
     events.each do |event|
       if event.start_date > Date.today
-        @upcoming_events.append(event)
+        event_tickets = Ticket.where(event_id: event.id)
+        event_tickets.each do |ticket|
+          @upcoming_events.append([event, ticket])
+        end
       end
     end
+    puts("###########DEBUG##############")
+    puts(@upcoming_events)
+
   end
   # GET /user_tickets/1/edit
   def edit
@@ -34,7 +40,10 @@ class UserTicketsController < ApplicationController
   # POST /user_tickets
   # POST /user_tickets.json
   def create
-    @user_ticket = UserTicket.new(user_ticket_params)
+    @user_ticket = UserTicket.new(user_id: session["warden.user.user.key"][0][0],
+                                  ticket_id: params[:user_ticket][:event_id][:ticket_di],
+                                  time: DateTime.now,
+                                  paid: FALSE)
     puts("###########DEBUG##############")
     puts(params)
     respond_to do |format|
@@ -42,6 +51,16 @@ class UserTicketsController < ApplicationController
         format.html { redirect_to @user_ticket, notice: 'Ticket was successfully added to the cart.' }
         format.json { render :show, status: :created, location: @user_ticket }
       else
+        events = Event.all
+        @upcoming_events = []
+        events.each do |event|
+          if event.start_date > Date.today
+            event_tickets = Ticket.where(event_id: event.id)
+            event_tickets.each do |ticket|
+              @upcoming_events.append([event, ticket])
+            end
+          end
+        end
         format.html { render :new }
         format.json { render json: @user_ticket.errors, status: :unprocessable_entity }
       end

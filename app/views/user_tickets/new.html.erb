@@ -1,7 +1,7 @@
 <h1>Purchase Ticket</h1>
 
-<%= render 'form', user_ticket: @user_ticket %>
+<%= render 'form', user_ticket: @user_ticket %> <br>
 
-<% if can? :create, UserTicket %> %>
+<% if can? :create, UserTicket %>
 <%= link_to 'Back', user_tickets_path %>
 <%end %>
